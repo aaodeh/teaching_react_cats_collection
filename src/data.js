@@ -296,19 +296,19 @@ export const countires = [
   { name: "Belarus", code: "BY", lat: 53.709807, lng: 27.953389 },
   { name: "Belize", code: "BZ", lat: 17.189877, lng: -88.49765 },
   { name: "Canada", code: "CA", lat: 56.130366, lng: -106.346771 },
-  {
-    name: "Cocos [Keeling] Islands",
-    code: "CC",
-    lat: -12.164165,
-    lng: 96.870956
-  },
+  // {
+  //   name: "Cocos [Keeling] Islands",
+  //   code: "CC",
+  //   lat: -12.164165,
+  //   lng: 96.870956
+  // },
   { name: "Congo [DRC]", code: "CD", lat: -4.038333, lng: 21.758664 },
-  {
-    name: "Central African Republic",
-    code: "CF",
-    lat: 6.611111,
-    lng: 20.939444
-  },
+  // {
+  //   name: "Central African Republic",
+  //   code: "CF",
+  //   lat: 6.611111,
+  //   lng: 20.939444
+  // },
   { name: "Congo [Republic]", code: "CG", lat: -0.228021, lng: 15.827659 },
   { name: "Switzerland", code: "CH", lat: 46.818188, lng: 8.227512 },
   { name: "Côte dIvoire", code: "CI", lat: 7.539989, lng: -5.54708 },
@@ -338,12 +338,12 @@ export const countires = [
   { name: "Ethiopia", code: "ET", lat: 9.145, lng: 40.489673 },
   { name: "Finland", code: "FI", lat: 61.92411, lng: 25.748151 },
   { name: "Fiji", code: "FJ", lat: -16.578193, lng: 179.414413 },
-  {
-    name: "Falkland Islands [Islas Malvinas]",
-    code: "FK",
-    lat: -51.796253,
-    lng: -59.523613
-  },
+  // {
+  //   name: "Falkland Islands [Islas Malvinas]",
+  //   code: "FK",
+  //   lat: -51.796253,
+  //   lng: -59.523613
+  // },
   { name: "Micronesia", code: "FM", lat: 7.425554, lng: 150.550812 },
   { name: "Faroe Islands", code: "FO", lat: 61.892635, lng: -6.911806 },
   { name: "France", code: "FR", lat: 46.227638, lng: 2.213749 },
@@ -361,12 +361,12 @@ export const countires = [
   { name: "Guadeloupe", code: "GP", lat: 16.995971, lng: -62.067641 },
   { name: "Equatorial Guinea", code: "GQ", lat: 1.650801, lng: 10.267895 },
   { name: "Greece", code: "GR", lat: 39.074208, lng: 21.824312 },
-  {
-    name: "South Georgia and the South Sandwich Islands",
-    code: "GS",
-    lat: -54.429579,
-    lng: -36.587909
-  },
+  // {
+  //   name: "South Georgia and the South Sandwich Islands",
+  //   code: "GS",
+  //   lat: -54.429579,
+  //   lng: -36.587909
+  // },
   { name: "Guatemala", code: "GT", lat: 15.783471, lng: -90.230759 },
   { name: "Guam", code: "GU", lat: 13.444304, lng: 144.793731 },
   { name: "Guinea-Bissau", code: "GW", lat: 11.803749, lng: -15.180413 },
