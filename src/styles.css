@@ -1,0 +1,91 @@
+.App {
+  font-family: sans-serif;
+  text-align: center;
+  padding-top: 80px;
+}
+
+.header {
+  padding: 10px;
+  background-color: firebrick;
+  color: #fff;
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 100;
+}
+
+.header h1 {
+  font-size: 25px;
+  padding: 0;
+  margin: 0;
+  text-align: center;
+}
+
+.map {
+  width: 100vw;
+  height: 50vw;
+}
+
+.marker-icon {
+  font-size: 1.5rem;
+  color: "blue";
+}
+
+.header .marker-icon {
+  padding: 0px 30px;
+}
+
+.marker-info {
+  position: absolute;
+  top: 1000px;
+  right: 50px;
+  width: 400px;
+  min-height: 200px;
+  padding: 20px;
+  background-color: rgba(0, 0, 0, 0.6);
+  border-radius: 10px;
+  font-size: 18;
+  color: #fff;
+  text-align: left;
+}
+
+.marker-info ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.close {
+  background-color: transparent;
+  padding: 10px;
+  color: white;
+  float: right;
+  bottom: 0px;
+  font-size: 1.2em;
+  cursor: pointer;
+}
+
+.characterCard {
+  padding: 15px;
+}
+
+.cardTitle {
+  background-color: firebrick;
+  color: whitesmoke;
+  padding: 5px;
+  margin-bottom: 25px;
+  width: 100%;
+}
+
+.ratingBox {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.CardBack {
+  display: flex;
+  flex-direction: column;
+  align-content: stretch;
+}
