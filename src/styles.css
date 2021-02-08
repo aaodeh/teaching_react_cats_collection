@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Lobster&display=swap");
+
 .App {
   font-family: sans-serif;
   text-align: center;
@@ -5,6 +7,7 @@
 }
 
 .header {
+  font-family: "Lobster", cursive;
   padding: 10px;
   background-color: firebrick;
   color: #fff;
@@ -67,6 +70,7 @@
 
 .characterCard {
   padding: 15px;
+  background-image: url("./images/tradingcard.png");
 }
 
 .cardTitle {
@@ -82,6 +86,10 @@
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+}
+
+.CardFront {
+  background-image: url("./images/tradingcard.png");
 }
 
 .CardBack {
