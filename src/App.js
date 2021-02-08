@@ -32,12 +32,46 @@ export default function App() {
     } else setFilteredContacts(contacts);
   };
 
+  const handleAddCat = () => {
+    let newCat = createNewCat();
+
+    setContacts((cats) => [...cats, newCat]);
+  };
+
+  function createNewCat() {
+    let countries = CatData.countires;
+    let countiesCount = CatData.countires.length - 1;
+    let randomCountry = countries[utils.getRandomInt(countiesCount)];
+
+    let attack = Math.random() * 3 + 1;
+    let defense = Math.random() * 3 + 1;
+    let speed = Math.random() * 3 + 1;
+
+    let rank = Math.round((attack + defense + speed) * (100 / 12));
+
+    let cat = {
+      name: utils.projectname(),
+      id: uuidv4(),
+      attack: attack,
+      defense: speed,
+      speed: defense,
+      rank: rank,
+      country: {
+        name: randomCountry.name,
+        code: randomCountry.code,
+        lat: randomCountry.lat,
+        lng: randomCountry.lng
+      }
+    };
+
+    return cat;
+  }
+
   useEffect(() => {
     // Update the document title using the browser API
 
     let countries = CatData.countires;
     let countiesCount = CatData.countires.length - 1;
-    let randomIndex = Math.random() * 3 + 1;
 
     let preloadedCats = [];
 
@@ -78,7 +112,7 @@ export default function App() {
 
   return (
     <div className="App">
-      <Header />
+      <Header AddCat={handleAddCat} />
       <div style={{ fontSize: "1em" }}>
         <label>search </label>
         <input

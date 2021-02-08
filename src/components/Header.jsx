@@ -2,7 +2,7 @@ import { Icon, InlineIcon } from "@iconify/react";
 import grinningCat from "@iconify-icons/twemoji/grinning-cat";
 import catWithWrySmile from "@iconify-icons/twemoji/cat-with-wry-smile";
 
-const Header = (AddCat) => {
+const Header = ({ AddCat }) => {
   return (
     <header className="header">
       <div
