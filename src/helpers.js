@@ -363,7 +363,7 @@ var science = [
   "viper",
   "wrench",
   "yard",
-  "zeus"
+  "zebra"
 ];
 
 export function projectname() {
@@ -400,3 +400,46 @@ export function projectname() {
 export function getRandomInt(max) {
   return Math.floor(Math.random() * Math.floor(max));
 }
+
+export function battle(a, d) {
+  var EVA_FACTOR = 1.125;
+  var EVA_INHERENT = 0.5;
+  var l = [];
+
+  a.hp = 10;
+  d.hp = 10;
+
+  // attack: attack,
+  // defense: speed,
+  // speed: defense,
+
+  a = clone(a);
+  d = clone(d);
+
+  while (d.hp > 0) {
+    a = [d, (d = a)][0];
+    let r = d.speed - a.hit;
+    let dg = 0;
+    if (
+      !(
+        Math.random() <
+        EVA_INHERENT +
+          ((r > 0 ? 1 : -1) * Math.pow(Math.abs(r), EVA_FACTOR)) / 100
+      )
+    ) {
+      dg = a.attack - d.defense < 1 ? 1 : a.attack - d.defense;
+      d.hp = d.hp < dg ? 0 : d.hp - dg;
+    }
+    l.push({ attacker: a.name, damage: dg });
+    console.log({ attacker: a.name, damage: dg });
+  }
+
+  function clone(c) {
+    return JSON.parse(JSON.stringify(c));
+  }
+
+  return { winner: a, log: l };
+}
+
+// var p1 = {id:'player 1',hp:10,atk:3,def:1,hit:1,eva:1};
+// var p2 = {id:'player 2',hp:10,atk:1,def:3,hit:1,eva:3};

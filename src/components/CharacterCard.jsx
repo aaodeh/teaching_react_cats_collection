@@ -40,7 +40,9 @@ const CharacterCard = ({ catData, onChangeImage }) => {
       >
         <div>
           <img
-            src={`https://robohash.org/adfadsfd${name}.png?set=set4&size=150x150&bgset=bg1`}
+            src={`https://robohash.org/${name
+              .split(" ")
+              .join("")}.png?set=set4&size=150x150&bgset=bg1`}
             alt="avatar"
           />
           <div style={{ padding: "5px 0px" }}>

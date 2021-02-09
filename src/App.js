@@ -36,6 +36,10 @@ export default function App() {
     let newCat = createNewCat();
 
     setContacts((cats) => [...cats, newCat]);
+
+    // let winner = utils.battle(contacts[0], contacts[1]);
+
+    // console.log(winner);
   };
 
   function createNewCat() {
@@ -52,6 +56,7 @@ export default function App() {
     let cat = {
       name: utils.projectname(),
       id: uuidv4(),
+      created: Date.now(),
       attack: attack,
       defense: speed,
       speed: defense,
@@ -76,30 +81,8 @@ export default function App() {
     let preloadedCats = [];
 
     for (let i = 1; i <= 15; i++) {
-      let randomCountry = countries[utils.getRandomInt(countiesCount)];
-
-      let attack = Math.random() * 3 + 1;
-      let defense = Math.random() * 3 + 1;
-      let speed = Math.random() * 3 + 1;
-
-      let rank = Math.round((attack + defense + speed) * (100 / 12));
-
-      let cat = {
-        name: utils.projectname(),
-        id: uuidv4(),
-        attack: attack,
-        defense: speed,
-        speed: defense,
-        rank: rank,
-        country: {
-          name: randomCountry.name,
-          code: randomCountry.code,
-          lat: randomCountry.lat,
-          lng: randomCountry.lng
-        }
-      };
-
-      preloadedCats.push(cat);
+      let newCat = createNewCat();
+      preloadedCats.push(newCat);
     }
 
     setContacts(preloadedCats);
@@ -107,7 +90,10 @@ export default function App() {
 
   useEffect(() => {
     // Update the document title using the browser API
-    setFilteredContacts(contacts);
+    const sorted = [...contacts].sort((a, b) => {
+      return b.created - a.created;
+    });
+    setFilteredContacts(sorted);
   }, [contacts]);
 
   return (
