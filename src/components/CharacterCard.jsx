@@ -1,5 +1,6 @@
 // import { Icon, InlineIcon } from "@iconify/react";
 // import grinningCat from "@iconify-icons/twemoji/grinning-cat";
+import React from "react";
 import * as utils from "../helpers.js";
 import { useState } from "react";
 import ReactCardFlip from "react-card-flip";
@@ -13,7 +14,7 @@ const CardStyle = {
   height: "250px"
 };
 
-const CharacterCard = ({ catData, onChangeImage }) => {
+const CharacterCard = ({ catData }) => {
   const {
     id,
     name,

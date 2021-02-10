@@ -2,7 +2,7 @@ import { Icon, InlineIcon } from "@iconify/react";
 import grinningCat from "@iconify-icons/twemoji/grinning-cat";
 import catWithWrySmile from "@iconify-icons/twemoji/cat-with-wry-smile";
 
-const Header = ({ AddCat }) => {
+const Header = ({ AddCat, CatDuel }) => {
   return (
     <header className="header">
       <div
@@ -13,6 +13,9 @@ const Header = ({ AddCat }) => {
           padding: "5px"
         }}
       >
+        <span>
+          <button onClick={CatDuel}>Start Duel</button>
+        </span>
         <div>
           <Icon icon={catWithWrySmile} width={30} className="marker-icon" />
           <span style={{ fontSize: "2rem" }}>Cat Collectables</span>

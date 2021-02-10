@@ -419,7 +419,7 @@ export function battle(a, d) {
   while (d.hp > 0) {
     a = [d, (d = a)][0];
     let r = d.speed - a.hit;
-    let dg = 0;
+    let damage = 0;
     if (
       !(
         Math.random() <
@@ -427,11 +427,10 @@ export function battle(a, d) {
           ((r > 0 ? 1 : -1) * Math.pow(Math.abs(r), EVA_FACTOR)) / 100
       )
     ) {
-      dg = a.attack - d.defense < 1 ? 1 : a.attack - d.defense;
-      d.hp = d.hp < dg ? 0 : d.hp - dg;
+      damage = a.attack - d.defense < 1 ? 1 : a.attack - d.defense;
+      d.hp = d.hp < damage ? 0 : d.hp - damage;
     }
-    l.push({ attacker: a.name, damage: dg });
-    console.log({ attacker: a.name, damage: dg });
+    l.push({ attacker: a.name, damage: damage });
   }
 
   function clone(c) {
