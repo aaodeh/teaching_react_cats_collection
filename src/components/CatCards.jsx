@@ -1,18 +1,12 @@
-import React from "react";
+import React, { useContext } from "react";
 import CharacterCard from "./CharacterCard";
+import { CatsContext } from "../App";
 
-const CatCards = ({ filteredContacts, handleSearchText, AddCat }) => {
+const CatCards = ({ AddCat }) => {
+  const [state, setState] = useContext(CatsContext);
   return (
     <div className="catCards">
-      <div style={{ fontSize: "1em" }}>
-        <label>search </label>
-        <input
-          onChange={handleSearchText}
-          type="text"
-          style={{ fontSize: "1em" }}
-        ></input>
-        <button onClick={AddCat}>Add a Cat</button>
-      </div>
+      <button onClick={AddCat}>Add a Cat</button>
       <div
         style={{
           display: "flex",
@@ -21,9 +15,10 @@ const CatCards = ({ filteredContacts, handleSearchText, AddCat }) => {
           justifyContent: "center"
         }}
       >
-        {filteredContacts.map((c, index) => (
-          <CharacterCard key={c.id} catData={c} />
-        ))}
+        {state.filteredCats &&
+          state.filteredCats.map((c) => (
+            <CharacterCard key={c.id} catData={c} />
+          ))}
       </div>
     </div>
   );

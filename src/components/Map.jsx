@@ -1,9 +1,12 @@
-import { useState, useEffect } from "react";
+import { useState, useContext } from "react";
 import GoogleMapReact from "google-map-react";
 import Marker from "./Marker";
 import MarkerBox from "./MarkerBox";
+import { CatsContext } from "../App";
 
-const Map = ({ data, center, zoom }) => {
+const Map = ({ center, zoom }) => {
+  const [state, setState] = useContext(CatsContext);
+
   const [markerInfo, setMarkerInfo] = useState(null);
 
   const closeInfoBox = (e) => {
@@ -18,7 +21,7 @@ const Map = ({ data, center, zoom }) => {
         defaultCenter={center}
         defaultZoom={zoom}
       >
-        {data.map((d) => (
+        {state.allCats.map((d) => (
           <Marker
             key={d.id}
             lat={d.country.lat}

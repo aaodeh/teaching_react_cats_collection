@@ -1,4 +1,5 @@
 import "./styles.css";
+import React from "react";
 import { useState, useEffect } from "react";
 import Map from "./components/Map";
 import Header from "./components/Header";
@@ -8,10 +9,18 @@ import * as utils from "./helpers.js";
 import { v4 as uuidv4 } from "uuid";
 import Main from "./components/Main";
 
-export default function App() {
+const CatsContext = React.createContext([{}, () => {}]);
+
+function App() {
+  const [state, setState] = useState({
+    allCats: [],
+    filteredCats: filteredContacts
+  });
+
   const [filteredContacts, setFilteredContacts] = useState([]);
 
   const [contacts, setContacts] = useState([]);
+  const [searchText, setSearchText] = useState("");
 
   const handleCatClick = (id) => {
     setFilteredContacts(
@@ -23,21 +32,30 @@ export default function App() {
     );
   };
 
-  const handleSearchText = (e) => {
-    e.preventDefault();
+  const HandleSearchText = (e) => {
     if (e.target.value !== "") {
-      setFilteredContacts(
-        contacts.filter((contact) =>
-          contact.name.toLowerCase().includes(e.target.value.toLowerCase())
-        )
+      let filtered = contacts.filter(
+        (contact) =>
+          contact.name.toLowerCase().includes(e.target.value.toLowerCase()) ||
+          contact.rank.toString().includes(e.target.value)
       );
-    } else setFilteredContacts(contacts);
+
+      setFilteredContacts(filtered);
+      setState({ ...state, filteredCats: filtered });
+    } else {
+      setFilteredContacts(contacts);
+      setState({ ...state, filteredCats: contacts });
+    }
+
+    let updated = { searchText: e.target.value };
+    setState((prev) => {
+      return { ...prev, ...updated };
+    });
   };
 
   const handleAddCat = (e) => {
     e.preventDefault();
     let newCat = createNewCat();
-    alert("got here");
     setContacts((cats) => [...cats, newCat]);
   };
 
@@ -92,15 +110,14 @@ export default function App() {
   useEffect(() => {
     // Update the document title using the browser API
 
-    let countries = CatData.countires;
-    let countiesCount = CatData.countires.length - 1;
-
     let preloadedCats = [];
 
     for (let i = 1; i <= 15; i++) {
       let newCat = createNewCat();
       preloadedCats.push(newCat);
     }
+
+    // setState({ ...state, allCats: preloadedCats});
 
     setContacts(preloadedCats);
   }, []);
@@ -111,18 +128,22 @@ export default function App() {
       return b.created - a.created;
     });
     setFilteredContacts(sorted);
+
+    let updated = { allCats: contacts, filteredCats: contacts };
+
+    setState((prev) => {
+      return { ...prev, ...updated };
+    });
   }, [contacts]);
 
   return (
-    <div className="App">
-      <Header AddCat={handleAddCat} CatDuel={handleCatDuel} />
-
-      <Main
-        filteredContacts={filteredContacts}
-        handleSearchText={handleSearchText}
-        handleCatClick={handleCatClick}
-        AddCat={handleAddCat}
-      />
-    </div>
+    <CatsContext.Provider value={[state, setState]}>
+      <div className="App">
+        <Header AddCat={handleAddCat} CatDuel={handleCatDuel} />
+        <Main AddCat={handleAddCat} HandleSearchText={HandleSearchText} />
+      </div>
+    </CatsContext.Provider>
   );
 }
+
+export { App, CatsContext };

@@ -1,41 +1,23 @@
-import { Switch, Route } from "react-router-dom";
-import CatCards from "./CatCards";
+import { BrowserRouter, Switch, Route } from "react-router-dom";
 import Map from "./Map";
 import Duel from "./Duel";
+import Cats from "./Cats";
 
-const Main = ({
-  filteredContacts,
-  handleSearchText,
-  handleCatClick,
-  AddCat
-}) => {
+const Main = ({ AddCat, HandleSearchText }) => {
   return (
     <div className="main">
-      <Switch>
-        <Route
-          exact
-          path="/"
-          component={() => (
-            <CatCards
-              filteredContacts={filteredContacts}
-              handleSearchText={handleSearchText}
-              AddCat={AddCat}
-            />
-          )}
-        />
-        <Route
-          exact
-          path="/duel"
-          component={() => <Duel filteredContacts={filteredContacts} />}
-        />
-        <Route
-          exact
-          path="/map"
-          component={() => (
-            <Map data={filteredContacts} style={{ height: 100, width: 100 }} />
-          )}
-        />
-      </Switch>
+      <BrowserRouter>
+        <Switch>
+          <Duel path="/duel" />
+          <Map path="/map" style={{ height: 100, width: 100 }} />
+          <Cats
+            exact
+            path="/"
+            HandleSearchText={HandleSearchText}
+            AddCat={AddCat}
+          />
+        </Switch>
+      </BrowserRouter>
     </div>
   );
 };
